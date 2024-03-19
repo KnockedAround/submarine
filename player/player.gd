@@ -186,6 +186,7 @@ func _on_reload_timer_timeout():
 
 func move_to_surface():
 	var move_speed = OXYGEN_REFILL_SURFACING_SPEED * get_process_delta_time()
+	rotation_degrees = lerp(rotation_degrees, 0.0, ROTATION_STRENGTH * get_physics_process_delta_time())
 	global_position.y = move_toward(global_position.y, OXYGEN_REFILL_Y_POS, move_speed)
 
 func _on_decrease_people_timer_timeout():
