@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://w4yb2c5b0ahh"]
+
+[ext_resource type="Script" path="res://user-interface/points-value-popup/point_value_popup.gd" id="1_td1af"]
+[ext_resource type="FontFile" uid="uid://6aykyha1lqki" path="res://user-interface/fonts/font_2.ttf" id="2_wgpre"]
+
+[sub_resource type="Animation" id="Animation_g35ft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i1f5p"]
+resource_name = "popup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khrbr"]
+_data = {
+"RESET": SubResource("Animation_g35ft"),
+"popup": SubResource("Animation_i1f5p")
+}
+
+[node name="PointValuePopup" type="Node2D"]
+z_index = 5
+script = ExtResource("1_td1af")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -5.0
+offset_right = 20.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.145098, 0.141176, 0.266667, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_wgpre")
+theme_override_font_sizes/font_size = 5
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_khrbr")
+}
+autoplay = "popup"

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://b34d6fuuxug88"]
+
+[ext_resource type="Texture2D" uid="uid://bkmpsi407wwv" path="res://enemies/shark/shark.png" id="1_pvw40"]
+[ext_resource type="Script" path="res://enemies/shark/shark.gd" id="2_yv3xt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0xs0"]
+atlas = ExtResource("1_pvw40")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g32x1"]
+atlas = ExtResource("1_pvw40")
+region = Rect2(22, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hck23"]
+atlas = ExtResource("1_pvw40")
+region = Rect2(44, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iljcu"]
+atlas = ExtResource("1_pvw40")
+region = Rect2(66, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ncn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0xs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g32x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hck23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iljcu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw2x1"]
+size = Vector2(11, 6)
+
+[node name="Shark" type="Area2D"]
+script = ExtResource("2_yv3xt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ncn2")
+autoplay = "default"
+frame = 1
+frame_progress = 0.656204
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_bw2x1")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
