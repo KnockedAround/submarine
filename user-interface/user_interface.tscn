@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqy12dy57bk27"]
+
+[ext_resource type="PackedScene" uid="uid://byp5jti3hrr76" path="res://user-interface/people-count/people_count.tscn" id="1_4sn8f"]
+[ext_resource type="PackedScene" uid="uid://qcubmca6b8sy" path="res://user-interface/oxygen-bar/oxygen_bar.tscn" id="2_sgmlp"]
+[ext_resource type="PackedScene" uid="uid://bh8rpcdbrux6b" path="res://user-interface/point-display/point_display.tscn" id="3_sm50i"]
+[ext_resource type="PackedScene" uid="uid://hyg8ld5o2lnf" path="res://user-interface/game-over/game_over.tscn" id="4_1qbug"]
+
+[node name="UserInterface" type="CanvasLayer"]
+
+[node name="PeopleCount" parent="." instance=ExtResource("1_4sn8f")]
+position = Vector2(7, 7)
+
+[node name="OxygenBar" parent="." instance=ExtResource("2_sgmlp")]
+
+[node name="PointDisplay" parent="." instance=ExtResource("3_sm50i")]
+
+[node name="GameOver" parent="." instance=ExtResource("4_1qbug")]

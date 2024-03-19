@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh8rpcdbrux6b"]
+
+[ext_resource type="FontFile" uid="uid://6aykyha1lqki" path="res://user-interface/fonts/font_2.ttf" id="1_rh3eg"]
+[ext_resource type="Script" path="res://user-interface/point-display/point_display.gd" id="2_dx4en"]
+
+[node name="PointDisplay" type="Label"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_rh3eg")
+theme_override_font_sizes/font_size = 10
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_dx4en")
